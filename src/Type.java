@@ -1,7 +1,5 @@
 
 public enum Type {
-	INTEGER, 
-	FLOAT, 
 	NUMBER,
 	ASPA,
 	ATOM,
@@ -10,7 +8,6 @@ public enum Type {
 	VAR,
 	MATHOP,
 	LOGOP,
-	NOTOP,
 	ISOPERAND,
 	VIRGULA,
 	COLCHETE_ESQ,

@@ -13,7 +13,8 @@ public class PrologJava {
 	public static String getIdentifier(String s, int lexemeBegin) {
 		int lookahead = lexemeBegin;
 		while (lookahead < s.length()) {
-			if (isLetter(s.charAt(lookahead)) || Character.isDigit(s.charAt(lookahead)) || s.charAt(lookahead) == '_') {
+			if (Character.isUpperCase(s.charAt(lookahead)) || Character.isLowerCase(s.charAt(lookahead))
+					|| Character.isDigit(s.charAt(lookahead)) || s.charAt(lookahead) == '_') {
 				lookahead++;
 			} else
 				return s.substring(lexemeBegin, lookahead);
@@ -101,13 +102,6 @@ public class PrologJava {
 
 	}
 
-	static boolean isLetter(char c) {
-		if (Character.isUpperCase(c) || Character.isLowerCase(c)) {
-			return true;
-		} else
-			return false;
-	}
-
 	static String readFile(String path) throws IOException {
 		byte[] encoded = Files.readAllBytes(Paths.get(path));
 		return new String(encoded);
@@ -116,7 +110,7 @@ public class PrologJava {
 	public static void main(String[] args) {
 		String input = "";
 		try {
-			input = readFile("/Users/tuliocarreira/Desktop/programa.txt");
+			input = readFile("./programa.txt");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

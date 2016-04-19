@@ -1,0 +1,757 @@
+/* TYPES & TYPE MATCHUPS */
+
+superEffective(grass,water). superEffective(grass,ground). superEffective(grass,rock).
+superEffective(fire,grass). superEffective(fire,ice). superEffective(fire,steel).
+superEffective(ground,fire). superEffective(ground,poison). superEffective(ground,electric). superEffective(ground,rock). superEffective(ground,steel).
+superEffective(poison,grass). superEffective(poison,fairy).
+superEffective(electric,water). superEffective(electric,flying).
+superEffective(water,fire). superEffective(water,ground). superEffective(water,rock).
+superEffective(rock,fire). superEffective(rock,ice). superEffective(rock,bug). superEffective(rock,flying).
+superEffective(flying,grass). superEffective(flying,bug). superEffective(flying,fighting).
+superEffective(ice,grass). superEffective(ice,ground). superEffective(ice,flying). superEffective(ice,dragon).
+superEffective(bug,grass). superEffective(bug,psychic). superEffective(bug,dark).
+superEffective(ghost,ghost). superEffective(ghost,psychic).
+superEffective(fighting,rock). superEffective(fighting,ice). superEffective(fighting,normal). superEffective(fighting,steel).
+superEffective(dragon,dragon).
+superEffective(psychic,poison). superEffective(psychic,fighting).
+superEffective(steel,rock). superEffective(steel,ice). superEffective(steel,fairy).
+superEffective(dark,ghost). superEffective(dark,psychic).
+superEffective(fairy,fighting). superEffective(fairy,dragon). superEffective(fairy,dark).
+
+notVeryEffective(grass,grass). notVeryEffective(grass,fire). notVeryEffective(grass,poison). notVeryEffective(grass,flying). notVeryEffective(grass,bug). notVeryEffective(grass,dragon). notVeryEffective(grass,steel).
+notVeryEffective(fire,fire). notVeryEffective(fire,water). notVeryEffective(fire,rock). notVeryEffective(fire,dragon).
+notVeryEffective(ground,grass). notVeryEffective(ground,bug).
+notVeryEffective(poison,ground). notVeryEffective(poison,poison). notVeryEffective(poison,rock). notVeryEffective(poison,ghost).
+notVeryEffective(electric,grass). notVeryEffective(electric,electric). notVeryEffective(electric,dragon).
+notVeryEffective(water,grass). notVeryEffective(water,water). notVeryEffective(water,dragon).
+notVeryEffective(rock,ground). notVeryEffective(rock,fighting). notVeryEffective(rock,steel).
+notVeryEffective(flying,electric). notVeryEffective(flying,rock). notVeryEffective(flying,steel).
+notVeryEffective(ice,fire). notVeryEffective(ice,water). notVeryEffective(ice,ice). notVeryEffective(ice,steel).
+notVeryEffective(normal,rock). notVeryEffective(normal,steel).
+notVeryEffective(bug,fire). notVeryEffective(bug,poison). notVeryEffective(bug,flying). notVeryEffective(bug,ghost). notVeryEffective(bug,fighting). notVeryEffective(bug,steel). notVeryEffective(bug,fairy).
+notVeryEffective(ghost,dark).
+notVeryEffective(fighting,poison). notVeryEffective(fighting,flying). notVeryEffective(fighting,bug). notVeryEffective(fighting,psychic).
+notVeryEffective(fighting,fairy).
+notVeryEffective(dragon,steel).
+notVeryEffective(psychic,psychic). notVeryEffective(psychic,steel).
+notVeryEffective(steel,fire). notVeryEffective(steel,electric). notVeryEffective(steel,water). notVeryEffective(steel,steel).
+notVeryEffective(dark,fighting). notVeryEffective(dark,dark). notVeryEffective(dark,fairy).
+notVeryEffective(fairy,fire). notVeryEffective(fairy,poison). notVeryEffective(fairy,steel).
+
+noEffect(ground,flying).
+noEffect(poison,steel).
+noEffect(electric,ground).
+noEffect(normal,ghost).
+noEffect(ghost,normal).
+noEffect(fighting,ghost).
+noEffect(dragon,fairy).
+noEffect(psychic,dark).
+
+type(X) :- superEffective(X,_).
+type(X) :- superEffective(_,X).
+weakTo(X,Y) :- superEffective(Y,X).
+resistantTo(X,Y) :- notVeryEffective(Y,X).
+immuneTo(X,Y) :- noEffect(Y,X).
+
+
+/* EVOLUTION */
+
+basic(farfetchd).
+basic(kangaskhan).
+basic(pinsir).
+basic(tauros).
+basic(lapras).
+basic(ditto).
+basic(aerodactyl).
+basic(articuno).
+basic(zapdos).
+basic(moltres).
+basic(mewtwo).
+basic(mew).
+basic(unown).
+basic(girafarig).
+basic(dunsparce).
+basic(qwilfish).
+basic(shuckle).
+basic(heracross).
+basic(corsola).
+basic(delibird).
+basic(skarmory).
+basic(stantler).
+basic(smeargle).
+basic(miltank).
+basic(raikou).
+basic(entei).
+basic(suicune).
+basic(lugia).
+basic(ho-oh).
+basic(celebi).
+basic(sableye).
+basic(mawile).
+basic(plusle).
+basic(minun).
+basic(volbeat).
+basic(illumise).
+basic(torkoal).
+basic(spinda).
+basic(zangoose).
+basic(seviper).
+basic(lunatone).
+basic(solrock).
+basic(castform).
+basic(kecleon).
+basic(tropius).
+basic(absol).
+basic(relicanth).
+basic(luvdisc).
+basic(regirock).
+basic(regice).
+basic(registeel).
+basic(latias).
+basic(latios).
+basic(kyogre).
+basic(groudon).
+basic(rayquaza).
+basic(jirachi).
+basic(deoxys).
+basic(pachirisu).
+basic(chatot).
+basic(spiritomb).
+basic(carnivine).
+basic(rotom).
+basic(uxie).
+basic(mesprit).
+basic(azelf).
+basic(dialga).
+basic(palkia).
+basic(heatran).
+basic(regigigas).
+basic(giratina).
+basic(cresselia).
+basic(phione).
+basic(manaphy).
+basic(darkrai).
+basic(shaymin).
+basic(arceus).
+basic(victini).
+basic(audino).
+basic(throh).
+basic(sawk).
+basic(basculin).
+basic(maractus).
+basic(sigilyph).
+basic(emolga).
+basic(alomomola).
+basic(stunfisk).
+basic(druddigon).
+basic(bouffalant).
+basic(heatmor).
+basic(durant).
+basic(cobalion).
+basic(terrakion).
+basic(virizion).
+basic(tornadus).
+basic(thundurus).
+basic(reshiram).
+basic(zekrom).
+basic(landorus).
+basic(kyurem).
+basic(keldeo).
+basic(meloetta).
+basic(genesect).
+basic(furfrou).
+basic(hawlucha).
+basic(dedenne).
+basic(carbink).
+basic(klefki).
+basic(xerneas).
+basic(yveltal).
+basic(zygarde).
+
+stage1(ivysaur,bulbasaur).
+stage1(charmeleon,charmander).
+stage1(wartortle,squirtle).
+stage1(metapod,caterpie).
+stage1(kakuna,weedle).
+stage1(pidgeotto,pidgey).
+stage1(raticate,rattata).
+stage1(fearow,spearow).
+stage1(arbok,ekans).
+stage1(pikachu,pichu).
+stage1(sandslash,sandshrew).
+stage1(nidorina,nidoran). stage1(nidorino,nidoran).
+stage1(clefairy,cleffa).
+stage1(ninetales,vulpix).
+stage1(jigglypuff,igglybuff).
+stage1(golbat,zubat).
+stage1(gloom,oddish).
+stage1(parasect,paras).
+stage1(venomoth,venonat).
+stage1(dugtrio,diglett).
+stage1(persian,meowth).
+stage1(golduck,psyduck).
+stage1(primeape,mankey).
+stage1(arcanine,growlithe).
+stage1(poliwhirl,poliwag).
+stage1(kadabra,abra).
+stage1(machoke,machop).
+stage1(weepinbell,bellsprout).
+stage1(tentacruel,tentacool).
+stage1(graveler,geodude).
+stage1(rapidash,ponyta).
+stage1(slowbro,slowpoke). stage1(slowking,slowpoke).
+stage1(magneton,magnemite).
+stage1(dodrio,doduo).
+stage1(dewgong,seel).
+stage1(muk,grimer).
+stage1(cloyster,shellder).
+stage1(haunter,gastly).
+stage1(steelix,onix).
+stage1(hypno,drowzee).
+stage1(kingler,krabby).
+stage1(electrode,voltorb).
+stage1(exeggutor,exeggcute).
+stage1(marowak,cubone).
+stage1(hitmonlee,tyrogue). stage1(hitmonchan,tyrogue). stage1(hitmontop,tyrogue).
+stage1(lickilicky,lickitung).
+stage1(weezing,koffing).
+stage1(rhydon,rhyhorn).
+stage1(chansey,happiny).
+stage1(tangrowth,tangela).
+stage1(seadra,horsea).
+stage1(seaking,goldeen).
+stage1(starmie,staryu).
+stage1(mrMime,mimeJr).
+stage1(scizor,scyther).
+stage1(jynx,smoochum).
+stage1(electabuzz,elekid).
+stage1(magmar,magby).
+stage1(gyarados,magikarp).
+stage1(vaporeon,eevee). stage1(flareon,eevee). stage1(jolteon,eevee). stage1(espeon,eevee). stage1(umbreon,eevee). stage1(leafeon,eevee). stage1(glaceon,eevee). stage1(sylveon,eevee).
+stage1(porygon2,porygon).
+stage1(omastar,omanyte).
+stage1(kabutops,kabuto).
+stage1(snorlax,munchlax).
+stage1(dragonair,dratini).
+stage1(bayleef,chikorita).
+stage1(quilava,cyndaquil).
+stage1(croconaw,totodile).
+stage1(furret,sentret).
+stage1(noctowl,hoothoot).
+stage1(ledian,ledyba).
+stage1(ariados,spinarak).
+stage1(lanturn,chinchou).
+stage1(togetic,togepi).
+stage1(tic-toc,eggy).
+stage1(xatu,natu).
+stage1(flaafy,mareep).
+stage1(marill,azurill).
+stage1(sudowoodo,bonsly).
+stage1(skiploom,hoppip).
+stage1(ambipom,aipom).
+stage1(sunflora,sunkern).
+stage1(yanmega,yanma).
+stage1(quagsire,wooper).
+stage1(honchkrow,murkrow).
+stage1(mismagius,misdreavus).
+stage1(wobbuffet,wynaut).
+stage1(foretress,pineco).
+stage1(gliscor,gligar).
+stage1(granbull,snubbull).
+stage1(weavile,sneasel).
+stage1(ursaring,teddiursa).
+stage1(magcargo,slugma).
+stage1(piloswine,swinub).
+stage1(octillery,remoraid).
+stage1(mantine,mantyke).
+stage1(houndoom,houndour).
+stage1(donphan,phanpy).
+stage1(pupitar,larvitar).
+stage1(grovyle,treecko).
+stage1(combusken,torchic).
+stage1(marshtomp,mudkip).
+stage1(mightyena,poochyena).
+stage1(linoone,zigzagoon).
+stage1(silcoon,wurmple). stage1(cascoon,wurmple).
+stage1(lombre,lotad).
+stage1(nuzleaf,seedot).
+stage1(swellow,taillow).
+stage1(pelipper,wingull).
+stage1(kirlia,ralts).
+stage1(masquerain,surskit).
+stage1(breloom,shroomish).
+stage1(vigoroth,slakoth).
+stage1(ninjask,nincada). stage1(shedinja,nincada).
+stage1(loudred,whismur).
+stage1(hariyama,makuhita).
+stage1(probopass,nosepass).
+stage1(delcatty,skitty).
+stage1(lairon,aron).
+stage1(medicham,meditite).
+stage1(manectric,electrike).
+stage1(roselia,budew).
+stage1(swalot,gulpin).
+stage1(sharpedo,carvanha).
+stage1(wailord,wailmer).
+stage1(camerupt,numel).
+stage1(grumpig,spoink).
+stage1(vibrava,trapinch).
+stage1(cacturne,cacnea).
+stage1(altaria,swablu).
+stage1(whiscash,barboach).
+stage1(crawdaunt,corphish).
+stage1(claydol,baltoy).
+stage1(cradily,lileep).
+stage1(armaldo,anorith).
+stage1(milotic,feebas).
+stage1(banette,shuppet).
+stage1(dusclops,duskull).
+stage1(chimecho,chingling).
+stage1(glalie,snorunt). stage1(froslass,snorunt).
+stage1(sealeo,spheal).
+stage1(huntail,clamperl). stage1(gorebyss,clamperl).
+stage1(shelgon,bagon).
+stage1(metang,beldum).
+stage1(grotle,turtwig).
+stage1(monferno,chimchar).
+stage1(prinplup,piplup).
+stage1(staravia,starly).
+stage1(bibarel,bidoof).
+stage1(kricketune,kricketot).
+stage1(luxio,shinx).
+stage1(rampardos,cranidos).
+stage1(bastiodon,shieldon).
+stage1(wormadam,burmy). stage1(mothim,burmy).
+stage1(vespiquen,combee).
+stage1(floatzel,buizel).
+stage1(cherrim,cherubi).
+stage1(gastrodon,shellos).
+stage1(drifblim,drifloon).
+stage1(lopunny,buneary).
+stage1(purugly,glameow).
+stage1(skuntank,stunky).
+stage1(bronzong,bronzor).
+stage1(gabite,gible).
+stage1(lucario,riolu).
+stage1(hippowdon,hippopotas).
+stage1(drapion,skorupi).
+stage1(toxicroak,croagunk).
+stage1(lumineon,finneon).
+stage1(abomasnow,snover).
+stage1(servine,snivy).
+stage1(pignite,tepig).
+stage1(dewott,oshawott).
+stage1(watchog,patrat).
+stage1(herdier,lillipup).
+stage1(liepard,purrloin).
+stage1(simisage,pansage).
+stage1(simisear,pansear).
+stage1(simipour,panpour).
+stage1(musharna,munna).
+stage1(tranquill,pidove).
+stage1(zebstrika,blitzle).
+stage1(boldore,roggenrola).
+stage1(swoobat,woobat).
+stage1(excadrill,drilbur).
+stage1(gurdurr,timburr).
+stage1(palpitoad,tympole).
+stage1(swadloon,sewaddle).
+stage1(whirlipede,venipede).
+stage1(whimsicott,cottonee).
+stage1(lilligant,petilil).
+stage1(krokorok,sandile).
+stage1(darmanitan,darumaka).
+stage1(crustle,dwebble).
+stage1(scrafty,scraggy).
+stage1(cofagrigus,yamask).
+stage1(carracosta,tirtouga).
+stage1(archeops,archen).
+stage1(garbodor,trubbish).
+stage1(zoroark,zorua).
+stage1(cinccino,minccino).
+stage1(gothorita,gothita).
+stage1(duosion,solosis).
+stage1(swanna,ducklett).
+stage1(vanillish,vanillite).
+stage1(sawsbuck,deerling).
+stage1(escavalier,karrablast).
+stage1(amoonguss,foongus).
+stage1(jellicent,frillish).
+stage1(galvantula,joltik).
+stage1(ferrothorn,ferroseed).
+stage1(klang,klink).
+stage1(eelektrik,tynamo).
+stage1(beheeyem,elgyem).
+stage1(lampent,litwick).
+stage1(fraxure,axew).
+stage1(beartic,cubchoo).
+stage1(accelgor,shelmet).
+stage1(mienshao,mienfoo).
+stage1(golurk,golett).
+stage1(bisharp,pawniard).
+stage1(braviary,rufflet).
+stage1(mandibuzz,vullaby).
+stage1(zweilous,deino).
+stage1(volcarona,larvesta).
+stage1(quilladin,chespin).
+stage1(braixen,fennekin).
+stage1(frogadier,froakie).
+stage1(diggersby,bunnelby).
+stage1(fletchinder,fletchling).
+stage1(spewpa,scatterbug).
+stage1(pyroar,litleo).
+stage1(floette,flabébé).
+stage1(gogoat,skiddo).
+stage1(pangoro,pancham).
+stage1(meowstic,espurr).
+stage1(doublade,honedge).
+stage1(aromatisse,spritzee).
+stage1(slurpuff,swirlix).
+stage1(malamar,inkay).
+stage1(barbaracle,binacle).
+stage1(dragalge,skrelp).
+stage1(clawitzer,clauncher).
+stage1(heliolisk,helioptile).
+stage1(tyrantrum,tyrunt).
+stage1(aurorus,amaura).
+stage1(sliggoo,goomy).
+stage1(trevenant,phantump).
+stage1(gourgeist,pumpkaboo).
+stage1(avalugg,bergmite).
+stage1(noivern,noibat).
+
+stage2(venusaur,ivysaur).
+stage2(charizard,charmeleon).
+stage2(blastoise,wartortle).
+stage2(butterfree,metapod).
+stage2(beedrill,kakuna).
+stage2(pidgeot,pidgeotto).
+stage2(raichu,pikachu).
+stage2(nidoqueen,nidorina). stage2(nidoking,nidorino).
+stage2(clefable,clefairy).
+stage2(wigglytuff,jigglypuff).
+stage2(crobat,golbat).
+stage2(vileplume,gloom). stage2(bellossom,gloom).
+stage2(poliwrath,poliwhirl). stage2(politoed,poliwhirl).
+stage2(alakazam,kadabra).
+stage2(machamp,machoke).
+stage2(victreebel,weepinbell).
+stage2(golem,graveler).
+stage2(magnezone,magneton).
+stage2(gengar,haunter).
+stage2(rhyperior,rhydon).
+stage2(blissey,chansey).
+stage2(kingdra,seadra).
+stage2(electivire,electabuzz).
+stage2(magmortar,magmar).
+stage2(porygon-z,porygon2).
+stage2(dragonite,dragonair).
+stage2(meganium,bayleef).
+stage2(typhlosion,quilava).
+stage2(feraligatr,croconaw).
+stage2(togekiss,togetic).
+stage2(eggykiss,tic-toc).
+stage2(ampharos,flaafy).
+stage2(azumarill,marill).
+stage2(jumpluff,skiploom).
+stage2(mamoswine,piloswine).
+stage2(tyranitar,pupitar).
+stage2(sceptile,grovyle).
+stage2(blaziken,combusken).
+stage2(swampert,marshtomp).
+stage2(beautifly,silcoon). stage2(dustox,cascoon).
+stage2(ludicolo,lombre).
+stage2(shiftry,nuzleaf).
+stage2(gardevoir,kirlia). stage2(gallade,kirlia).
+stage2(slaking,vigoroth).
+stage2(exploud,loudred).
+stage2(aggron,lairon).
+stage2(roserade,roselia).
+stage2(flygon,vibrava).
+stage2(dusknoir,dusclops).
+stage2(walrein,sealeo).
+stage2(salamence,shelgon).
+stage2(metagross,metang).
+stage2(torterra,grotle).
+stage2(infernape,monferno).
+stage2(empoleon,prinplup).
+stage2(staraptor,staravia).
+stage2(luxray,luxio).
+stage2(garchomp,gabite).
+stage2(serperior,servine).
+stage2(emboar,pignite).
+stage2(samurott,dewott).
+stage2(unfezant,tranquill).
+stage2(stoutland,herdier).
+stage2(gigalith,boldore).
+stage2(conkeldurr,gurdurr).
+stage2(leavanny,swadloon).
+stage2(scolipede,whirlipede).
+stage2(krookodile,krokorok).
+stage2(gothitelle,gothorita).
+stage2(reuniclus,duosion).
+stage2(vanilluxe,vanillish).
+stage2(klinklang,klang).
+stage2(eelektross,eelektrik).
+stage2(chandelure,lampent).
+stage2(haxorus,fraxure).
+stage2(hydreigon,zweilous).
+stage2(chesnaught,quilladin).
+stage2(delphox,braixen).
+stage2(greninja,frogadier).
+stage2(talonflame,fletchinder).
+stage2(vivillon,spewpa).
+stage2(florges,floette).
+stage2(aegislash,doublade).
+stage2(goodra,sliggoo).
+
+megaEvo(mega_venusaur,venusaur).
+megaEvo(mega_charizardX,charizard). megaEvo(mega_charizardY,charizard).
+megaEvo(mega_blastoise,blastoise).
+megaEvo(mega_alakazam,alakazam).
+megaEvo(mega_gengar,gengar).
+megaEvo(mega_kangaskhan,kangaskhan).
+megaEvo(mega_scizor,scizor).
+megaEvo(mega_gyarados,gyarados).
+megaEvo(mega_aerodactyl,aerodactyl).
+megaEvo(mega_mewtwoX,mewtwo). megaEvo(mega_mewtwoY,mewtwo).
+megaEvo(mega_ampharos,ampharos).
+megaEvo(mega_heracross,heracross).
+megaEvo(mega_tyranitar,tyranitar).
+megaEvo(mega_blaziken,blaziken).
+megaEvo(mega_gardevoir,gardevoir).
+megaEvo(mega_mawile,mawile).
+megaEvo(mega_aggron,aggron).
+megaEvo(mega_medicham,medicham).
+megaEvo(mega_zangoose,zangoose).
+megaEvo(mega_banette,banette).
+megaEvo(mega_absol,absol).
+megaEvo(mega_latias,latias).
+megaEvo(mega_latios,latios).
+megaEvo(mega_garchomp,garchomp).
+megaEvo(mega_lucario,lucario).
+megaEvo(mega_abomasnow,abomasnow).
+
+
+/* CONDITIONAL STATEMENTS (EVOLUTION) */
+
+evolvesInto(X,Y) :- stage1(Y,X).
+evolvesInto(X,Y) :- stage2(Y,X).
+evolvesInto(X,Y) :- megaEvo(Y,X).
+evolvesInto(X,Y) :- stage2(Y,Z), evolvesInto(X,Z).
+evolvesInto(X,Y) :- megaEvo(Y,Z), evolvesInto(X,Z).
+evolvesFrom(X,Y) :- evolvesInto(Y,X).
+basic(X) :- stage1(_,X).
+stage1(X) :- evolvesFrom(X,Y),basic(Y).
+stage2(X) :- evolvesFrom(X,Y),stage1(Y).
+megaEvo(X) :- megaEvo(X,_).
+
+
+/* PROFESSORS */
+
+professor(oak,kanto,pokemon_humanRelationships).
+professor(elm,johto,pokemonEggsAndAbilities).
+professor(birch,hoenn,pokemonHabitats).
+professor(rowan,sinnoh,pokemonEvolution).
+professor(juniper,unova,pokemonOrigins).
+professor(sycamore,kalos,pokemonMega_Evolution).
+
+
+/* GYM LEADERS */
+
+gymLeader(brock,kanto,1).
+gymLeader(misty,kanto,2).
+gymLeader(ltSurge,kanto,3).
+gymLeader(erika,kanto,4).
+gymLeader(janine,kanto,5).
+gymLeader(sabrina,kanto,6).
+gymLeader(blaine,kanto,7).
+gymLeader(blue,kanto,8).
+gymLeader(falkner,johto,1).
+gymLeader(bugsy,johto,2).
+gymLeader(whitney,johto,3).
+gymLeader(morty,johto,4).
+gymLeader(chuck,johto,5).
+gymLeader(jasmine,johto,6).
+gymLeader(pryce,johto,7).
+gymLeader(clair,johto,8).
+gymLeader(roxanne,hoenn,1).
+gymLeader(brawly,hoenn,2).
+gymLeader(wattson,hoenn,3).
+gymLeader(flannery,hoenn,4).
+gymLeader(norman,hoenn,5).
+gymLeader(winona,hoenn,6).
+gymLeader(tate/liza,hoenn,7).
+gymLeader(juan,hoenn,8).
+gymLeader(roark,sinnoh,1).
+gymLeader(gardenia,sinnoh,2).
+gymLeader(maylene,sinnoh,3).
+gymLeader(crasher_wake,sinnoh,4).
+gymLeader(fantina,sinnoh,5).
+gymLeader(byron,sinnoh,6).
+gymLeader(candice,sinnoh,7).
+gymLeader(volkner,sinnoh,8).
+gymLeader(cheren,unova,1).
+gymLeader(roxie,unova,2).
+gymLeader(burgh,unova,3).
+gymLeader(elesa,unova,4).
+gymLeader(clay,unova,5).
+gymLeader(skyla,unova,6).
+gymLeader(drayden,unova,7).
+gymLeader(marlon,unova,8).
+gymLeader(viola,kalos,1).
+gymLeader(grant,kalos,2).
+gymLeader(korrina,kalos,3).
+gymLeader(ramos,kalos,4).
+gymLeader(clemont,kalos,5).
+gymLeader(valerie,kalos,6).
+gymLeader(olympia,kalos,7).
+gymLeader(wulfric,kalos,8).
+
+gymLeader(brock,rock).
+gymLeader(misty,water).
+gymLeader(ltSurge,electric).
+gymLeader(erika,grass).
+gymLeader(janine,poison).
+gymLeader(sabrina,psychic).
+gymLeader(blaine,fire).
+gymLeader(blue,various).
+gymLeader(falkner,flying).
+gymLeader(bugsy,bug).
+gymLeader(whitney,normal).
+gymLeader(morty,ghost).
+gymLeader(chuck,fighting).
+gymLeader(jasmine,steel).
+gymLeader(pryce,ice).
+gymLeader(clair,dragon).
+gymLeader(roxanne,rock).
+gymLeader(brawly,fighting).
+gymLeader(wattson,electric).
+gymLeader(flannery,fire).
+gymLeader(norman,normal).
+gymLeader(winona,flying).
+gymLeader(tate/liza,psychic).
+gymLeader(juan,water).
+gymLeader(roark,rock).
+gymLeader(gardenia,grass).
+gymLeader(maylene,fighting).
+gymLeader(crasher_wake,water).
+gymLeader(fantina,ghost).
+gymLeader(byron,steel).
+gymLeader(candice,ice).
+gymLeader(volkner,electric).
+gymLeader(cheren,normal).
+gymLeader(roxie,poison).
+gymLeader(burgh,bug).
+gymLeader(elesa,electric).
+gymLeader(clay,ground).
+gymLeader(skyla,flying).
+gymLeader(drayden,dragon).
+gymLeader(marlon,water).
+gymLeader(viola,bug).
+gymLeader(grant,rock).
+gymLeader(korrina,fighting).
+gymLeader(ramos,grass).
+gymLeader(clemont,electric).
+gymLeader(valerie,fairy).
+gymLeader(olympia,psychic).
+gymLeader(wulfric,ice).
+
+
+/* CONDITIONAL STATEMENTS & DEFINITIONS (GYM LEADERS) */
+
+
+tl(tate). tl(liza).
+
+
+/* ELITE FOUR & CHAMPIONS */
+
+elite4(will,Indigo,1) :- iRegion(Indigo).
+elite4(koga,Indigo,2) :- iRegion(Indigo).
+elite4(bruno,Indigo,3) :- iRegion(Indigo).
+elite4(karen,Indigo,4) :- iRegion(Indigo).
+elite4(lance,Indigo,5) :- iRegion(Indigo).
+elite4(sidney,hoenn,1).
+elite4(phoebe,hoenn,2).
+elite4(glacia,hoenn,3).
+elite4(drake,hoenn,4).
+elite4(wallace,hoenn,5).
+elite4(aaron,sinnoh,1).
+elite4(bertha,sinnoh,2).
+elite4(flint,sinnoh,3).
+elite4(lucian,sinnoh,4).
+elite4(cynthia,sinnoh,5).
+elite4(shauntal,unova,O) :- e4order(O).
+elite4(marshal,unova,O) :- e4order(O).
+elite4(grimsley,unova,O) :- e4order(O).
+elite4(caitlin,unova,O) :- e4order(O).
+elite4(iris,unova,5).
+elite4(malva,kalos,O) :- e4order(O).
+elite4(wikstrom,kalos,O) :- e4order(O).
+elite4(drasna,kalos,O) :- e4order(O).
+elite4(siebold,kalos,O) :- e4order(O).
+elite4(diantha,kalos,5).
+
+elite4(will,psychic).
+elite4(koga,poison).
+elite4(bruno,fighting).
+elite4(karen,dark).
+elite4(lance,dragon).
+elite4(sidney,dark).
+elite4(phoebe,ghost).
+elite4(glacia,ice).
+elite4(drake,dragon).
+elite4(wallace,water).
+elite4(aaron,bug).
+elite4(bertha,ground).
+elite4(flint,fire).
+elite4(lucian,psychic).
+elite4(cynthia,various).
+elite4(shauntal,ghost).
+elite4(marshal,fighting).
+elite4(grimsley,dark).
+elite4(caitlin,psychic).
+elite4(iris,dragon).
+elite4(malva,fire).
+elite4(wikstrom,steel).
+elite4(drasna,dragon).
+elite4(siebold,water).
+elite4(diantha,various).
+
+
+/* CONDITIONAL STATEMENTS & DEFINITIONS (ELITE FOUR & CHAMPIONS) */
+
+
+iRegion(kanto). iRegion(johto).
+e4order(1). e4order(2). e4order(3). e4order(4).
+
+
+/* REGIONS */
+
+region(kanto). region(johto). region(hoenn). region(sinnoh). region(unova). region(kalos).
+
+
+/* TECHNICAL & HIDDEN MACHINES */
+
+tm(01,i,mega_punch). tm(01,ii,dynamicpunch). tm(01,iii,focus_punch). tm(01,iv,focus_punch). tm(01,v,hone_claws). tm(01,vi,hone_claws).
+tm(02,i,razor_wind). tm(02,ii,headbutt). tm(02,DC,dragon_claw) :- dclaw(DC).
+tm(03,i,swords_dance). tm(03,ii,curse). tm(03,iii,water_pulse). tm(03,iv,water_pulse). tm(03,v,psyshock). tm(03,vi,psyshock).
+tm(04,i,whirlwind). tm(04,ii,rollout). tm(04,CM,calm_mind) :- calm(CM).
+tm(05,i,mega_kick). tm(05,R,roar) :- roar(R).
+tm(06,T,toxic) :- tox(T).
+tm(07,i,horn_drill). tm(07,ii,zap_cannon). tm(07,H,hail) :- hail(H).
+tm(08,i,body_slam). tm(08,ii,rock_smash). tm(08,BU,bulk_up) :- bulk(BU).
+tm(09,i,take_down). tm(09,ii,psych_up). tm(09,iii,bullet_seed). tm(09,iv,bullet_seed). tm(09,v,venoshock). tm(09,vi,venoshock).
+
+
+
+/* CONDITIONAL STATEMENTS (TECHNICAL & HIDDEN MACHINES) */
+
+dclaw(iii). dclaw(iv). dclaw(v). dclaw(vi).
+calm(iii). calm(iv). calm(v). calm(vi).
+roar(ii). roar(iii). roar(iv). roar(v). roar(vi).
+tox(i). tox(ii). tox(iii). tox(iv). tox(v). tox(vi).
+hail(iii). hail(iv). hail(v). hail(vi).
+bulk(iii). bulk(iv). bulk(v). bulk(vi).
+
+
